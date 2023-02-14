@@ -1,0 +1,47 @@
+Python3 :
+Answer1 :
+
+class Solution:
+    def twoSum(self, nums, target):
+        nums_hash = {}
+        for i in range(len(nums)):
+            if target - nums[i] in nums_hash: 
+                return [nums_hash[target - nums[i]], i]
+            nums_hash[nums[i]] = i
+            
+            
+Answer2 :
+
+class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        d={}
+        for i in range(len(nums)):
+            if target-nums[i] not in d:
+                d[nums[i]]=i
+            else:
+                return([i,d[target-nums[i]]])
+                
+                
+  Java :
+  
+  class Solution {
+    public int[] twoSum(int[] nums, int target) {
+        Map<Integer, Integer> table = new HashMap<>();
+        int[] ans = new int[2];
+        
+        for(int i = 0; i < nums.length; i++) {
+            if(table.get(target - nums[i]) != null) {
+                // If there is a matching, return it
+                ans[0] = i;
+                ans[1] = table.get(target - nums[i]);
+                break;
+                
+            } else {
+                // If not, insert it into table for future use
+                table.put(nums[i], i);
+            }
+        }
+        
+        return ans;
+    }
+}
